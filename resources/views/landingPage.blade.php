@@ -119,7 +119,7 @@
         display: inline-flex;
         height: 40px;
         width: 150px;
-        border: 2px solid #D4AF37;
+        border: 1px solid #D4AF37;
         margin: 20px 20px 20px 20px;
         color: #D4AF37;
         text-transform: uppercase;
@@ -155,6 +155,20 @@
                 <div id="underline"></div>
                 <a href="#">Let's Go!</a>
             </div>
+            @if (Route::has('login'))
+            <div class="hidden fixed top-0 right-0 px-6 py-4 sm:block">
+                @auth
+                <a href="{{ url('/home') }}" class="text-sm text-gray-700 dark:text-gray-500 underline">Home</a>
+                @else
+                <a href="{{ route('login') }}" class="text-sm text-gray-700 dark:text-gray-500 underline">Log in</a>
+                <br>
+                @if (Route::has('register'))
+                <a href="{{ route('register') }}"
+                    class="ml-4 text-sm text-gray-700 dark:text-gray-500 underline">Register</a>
+                @endif
+                @endauth
+            </div>
+            @endif
         </div>
     </div>
 </body>
